@@ -97,6 +97,8 @@ const transferwise = function (config) {
     this.fundTransfer = function ({
       transferId,
       type = 'BALANCE',
+      ott,
+      signature,
       versionPrefix = 'v1',
     }) {
       return request({
@@ -104,6 +106,10 @@ const transferwise = function (config) {
           type,
         },
         method: 'POST',
+        headers: {
+          'X-2FA-Approval': ott,
+          'X-Signature': signature
+        }
         path: `/transfers/${transferId}/payments`,
         versionPrefix,
       });
