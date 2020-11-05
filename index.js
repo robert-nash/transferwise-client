@@ -109,7 +109,7 @@ const transferwise = function (config) {
         headers: {
           'X-2FA-Approval': ott,
           'X-Signature': signature
-        }
+        },
         path: `/transfers/${transferId}/payments`,
         versionPrefix,
       });
